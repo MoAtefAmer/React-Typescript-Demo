@@ -7,10 +7,16 @@ import {
   Oscar,
   Button,
   Input,
-  Container
+  Container,
 } from './components';
-import {Person} from "./components/Person"
-
+import { ThemeContextProvider } from './components/context/ThemeContext';
+import { Person } from './components/Person';
+import { Counter } from './components/state/Counter';
+import { Box } from './components/context/Box';
+import { UserContextProvider } from './components/context/UserContext';
+import { User } from './components/context/User';
+import { DomRef } from './components/ref/DomRef';
+import { MutableRef } from './components/ref/MutableRef';
 function App() {
   const personName = {
     first: 'Clark',
@@ -34,7 +40,25 @@ function App() {
       </Oscar>
       <Button handleClick={(event, id) => console.log('sd', event, id)} />
       <Input value='' handleChange={(event) => console.log(event)} />
-      <Container styles={{border:'1px solid black',padding:'1rem'}}/>
+      <Container styles={{ border: '1px solid black', padding: '1rem' }} />
+      <Counter />
+      <br />
+      <br />
+      <br />
+      <br />
+      <ThemeContextProvider>
+        <Box />
+      </ThemeContextProvider>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <UserContextProvider>
+        <User/>
+      </UserContextProvider>
+
+      <DomRef></DomRef>
+      <MutableRef></MutableRef>
     </div>
   );
 }
